@@ -1,0 +1,25 @@
+<div class="main-container">
+  <app-header></app-header>
+  <div class="content-container">
+    <clr-vertical-nav>
+      <a clrVerticalNavLink routerLink="/list-transact" routerLinkActive="active"
+        >list-transact</a
+      >
+      <a clrVerticalNavLink routerLink="./add-transact" routerLinkActive="active"
+        >add-transact</a
+      >
+      <a clrVerticalNavLink routerLink="./logine" routerLinkActive="active"
+        >login</a>
+      <a clrVerticalNavLink routerLink="./snorlax" routerLinkActive="active"
+        >Snorlax</a
+      >
+      <div class="nav-divider"></div>
+      <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active"
+        >Credit</a
+      >
+    </clr-vertical-nav>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

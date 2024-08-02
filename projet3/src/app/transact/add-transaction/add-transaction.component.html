@@ -1,0 +1,64 @@
+<form clrStepper [formGroup]="form" (ngSubmit)="submit()">
+  <clr-stepper-panel formGroupName="transaction">
+    <clr-step-title>Titre de la Transaction</clr-step-title>
+    <clr-step-description>Veuillez entrer les détails de la transaction.</clr-step-description>
+    <clr-step-content *clrIfExpanded>
+      <clr-input-container>
+        <label for="title">Titre</label>
+        <input clrInput id="title" formControlName="title" placeholder="Titre de la transaction" />
+        <clr-control-error *clrIfError="'required'">Titre requis</clr-control-error>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label for="description">Description</label>
+        <textarea clrTextarea id="description" formControlName="description" placeholder="Description de la transaction"></textarea>
+        <clr-control-error *clrIfError="'required'">Description requise</clr-control-error>
+      </clr-textarea-container>
+
+      <button clrStepButton="next">Suivant</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+
+  <clr-stepper-panel formGroupName="beneficiary">
+    <clr-step-title>Bénéficiaire</clr-step-title>
+    <clr-step-description>Veuillez choisir le bénéficiaire.</clr-step-description>
+    <clr-step-content *clrIfExpanded>
+      <clr-select-container>
+        <label for="beneficiary">Bénéficiaire</label>
+        <select clrSelect id="beneficiary" formControlName="beneficiary">
+          <option value="" disabled>Choisissez un bénéficiaire</option>
+          <option *ngFor="let beneficiary of beneficiaries" [value]="beneficiary.id">{{ beneficiary.name }}</option>
+        </select>
+        <clr-control-error *clrIfError="'required'">Bénéficiaire requis</clr-control-error>
+      </clr-select-container>
+
+      <button clrStepButton="next">Suivant</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+
+  <clr-stepper-panel formGroupName="amount">
+    <clr-step-title>Montant et Paiement</clr-step-title>
+    <clr-step-description>Veuillez entrer le montant et choisir le type de paiement.</clr-step-description>
+    <clr-step-content *clrIfExpanded>
+      <clr-input-container>
+        <label for="amount">Montant</label>
+        <input clrInput id="amount" formControlName="amount" placeholder="Montant" type="number" />
+        <clr-control-error *clrIfError="'required'">Montant requis</clr-control-error>
+      </clr-input-container>
+
+      <clr-select-container>
+        <label for="paymentType">Type de paiement</label>
+        <select clrSelect id="paymentType" formControlName="paymentType">
+          <option value="" disabled>Choisissez un type de paiement</option>
+          <option value="credit">Carte de crédit</option>
+          <option value="debit">Carte de débit</option>
+          <option value="paypal">PayPal</option>
+          <option value="cash">Espèces</option>
+        </select>
+        <clr-control-error *clrIfError="'required'">Type de paiement requis</clr-control-error>
+      </clr-select-container>
+
+      <button clrStepButton="submit">Soumettre</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+</form>
